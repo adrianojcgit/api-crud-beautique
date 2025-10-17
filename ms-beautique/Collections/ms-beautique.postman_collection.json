@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "816f096a-6506-493c-b039-7f3a050b2a0a",
+		"name": "ms-beautique",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1998846"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "create-customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Nicolas\",\r\n    \"phone\":\"11971002317\",\r\n    \"email\":\"nicolas@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-customer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\":\"Nicolas Castro\",\r\n    \"phone\":\"11971111111\",\r\n    \"email\":\"nicolas.castro@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/customer/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"customer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "beauty-procedures",
+			"item": [
+				{
+					"name": "create-beauty-procedure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Corte\",\r\n    \"description\":\"Corte de cabelo masculino\",\r\n    \"price\":24.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/beauty-procedures",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"beauty-procedures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-beauty-procedure",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"name\":\"Pintura\",\r\n    \"description\":\"Pintura de cabelo masculino\",\r\n    \"price\":358.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/beauty-procedures",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"beauty-procedures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-by-id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/beauty-procedures/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"beauty-procedures",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "appointments",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateTime\": \"2025-10-16T15:00:00\",\r\n    \"appointmentsOpen\":true,\r\n    \"customer\":null,\r\n    \"beautyProcedure\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/ms-beautique/appointments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"ms-beautique",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
