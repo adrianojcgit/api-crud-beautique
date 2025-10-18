@@ -27,6 +27,19 @@ services:
     volumes:
       - 'd:\rabbitmq-data:/var/lib/rabbitmq'
       - 'd:\rabbitmq-log:/var/log/rabbitmq'
+  mongodb:
+    image: 'mongo:latest'
+    hostname: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: mongopassword
+    volumes:
+      - 'D:/db-mongodb:/data/db'
+      - './mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh'
+    ports:
+      - '27017:27017'
+    networks:
+      - beautique-network
 
 networks:
   beautique-network:
