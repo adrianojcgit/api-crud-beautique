@@ -15,7 +15,7 @@ public class SyncLogger {
         logger.error(message);
     }
 
-    private static void trace(String message, Object ... args){
+    public static void trace(String message, Object ... args){
         logger.trace(message, args);
     }
 }
