@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/ms-sync/pom.xml" />
         <option value="$PROJECT_DIR$/ms-beautique/pom.xml" />
+          <option value="$PROJECT_DIR$/ms-query/pom.xml" />
       </list>
     </option>
   </component>
