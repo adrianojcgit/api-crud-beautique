@@ -3,7 +3,6 @@ package br.com.beautique.ms_query.services.Impl;
 import br.com.beautique.ms_query.dtos.customers.CustomerDTO;
 import br.com.beautique.ms_query.repositories.CustomerRepository;
 import br.com.beautique.ms_query.services.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,11 +27,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> listByNameLikeIgnoreCase(String name) {
-        return List.of();
+        try{
+            return customerRepository.findByNameLikeIgnoreCase(name);
+        }catch(Exception e){
+            throw new RuntimeException("Error listing all customer by name");
+        }
     }
 
     @Override
     public List<CustomerDTO> listByEmailLikeIgnoreCase(String email) {
-        return List.of();
+        try{
+            return customerRepository.findByEmailLikeIgnoreCase(email);
+        }catch(Exception e){
+            throw new RuntimeException("Error listing all customer by email");
+        }
     }
 }

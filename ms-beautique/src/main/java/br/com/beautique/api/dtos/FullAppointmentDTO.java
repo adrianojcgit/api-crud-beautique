@@ -18,6 +18,6 @@ public class FullAppointmentDTO {
     private Boolean appointmentsOpen;
 
     private CustomerDTO customer;
-    private BeautyProcedureDTO beautyProcedureDTO;
+    private BeautyProcedureDTO beautyProcedure;
 
 }

@@ -64,7 +64,7 @@ public class AppointmentsServiceImpl implements AppointmentsService {
                 .dateTime((appointmentsEntity.getDateTime()))
                 .appointmentsOpen((appointmentsEntity.getAppointmentsOpen()))
                 .customer(customerDTO)
-                .beautyProcedureDTO(beautyProcedureDTO)
+                .beautyProcedure(beautyProcedureDTO)
                 .build();
         brokerService.send("appointments", fullAppointmentDTO);
     }

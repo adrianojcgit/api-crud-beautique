@@ -4,6 +4,7 @@ import br.com.beautique.ms_sync.dtos.appointments.FullAppointmentDTO;
 import br.com.beautique.ms_sync.dtos.beautyprocedures.BeautyProcedureDTO;
 import br.com.beautique.ms_sync.dtos.customers.CustomerDTO;
 import br.com.beautique.ms_sync.listeners.ListenerConfig;
+import br.com.beautique.ms_sync.services.SyncService;
 import br.com.beautique.ms_sync.utils.SyncLogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
@@ -15,17 +16,20 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQListenerConfig implements ListenerConfig {
 
     private final ObjectMapper objectMapper;
+    private final SyncService syncService;
 
-    public RabbitMQListenerConfig(ObjectMapper objectMapper) {
+    public RabbitMQListenerConfig(ObjectMapper objectMapper, SyncService syncService) {
         this.objectMapper = objectMapper;
+        this.syncService = syncService;
     }
 
     @RabbitListener(queues="customerQueue")
     @Override
     public void listenToCustomerQueue(String message) {
         try{
-            CustomerDTO customer = objectMapper.readValue(message, CustomerDTO.class);
-            SyncLogger.info("Message received from queue customerQueue: " + customer.toString());
+            CustomerDTO customerDTO = objectMapper.readValue(message, CustomerDTO.class);
+            syncService.syncCustomer(customerDTO);
+            SyncLogger.info("Message received from queue customerQueue: " + customerDTO.toString());
         }catch (Exception e){
             SyncLogger.error("Error listen customer queue: " + e.getMessage());
         }
@@ -35,8 +39,9 @@ public class RabbitMQListenerConfig implements ListenerConfig {
     @Override
     public void listenToAppointmentQueue(String message) {
         try{
-            FullAppointmentDTO fullAppointment = objectMapper.readValue(message, FullAppointmentDTO.class);
-            SyncLogger.info("Message received from queue appointmentQueue: " + fullAppointment.toString());
+            FullAppointmentDTO fullAppointmentDTO = objectMapper.readValue(message, FullAppointmentDTO.class);
+            syncService.syncAppointment(fullAppointmentDTO);
+            SyncLogger.info("Message received from queue appointmentQueue: " + fullAppointmentDTO.toString());
         }catch (Exception e){
             SyncLogger.error("Error listen full Appointment queue: " + e.getMessage());
         }
@@ -46,8 +51,9 @@ public class RabbitMQListenerConfig implements ListenerConfig {
     @Override
     public void listenToBeautyProcedureQueue(String message) {
         try{
-            BeautyProcedureDTO beautyProcedures = objectMapper.readValue(message, BeautyProcedureDTO.class);
-            SyncLogger.info("Message received from queue beautyProcedureQueue: " + beautyProcedures.toString());
+            BeautyProcedureDTO beautyProcedureDTO = objectMapper.readValue(message, BeautyProcedureDTO.class);
+            syncService.syncBeautyProcedures(beautyProcedureDTO);
+            SyncLogger.info("Message received from queue beautyProcedureQueue: " + beautyProcedureDTO.toString());
         }catch (Exception e){
             SyncLogger.error("Error listen beauty Procedure queue: " + e.getMessage());
         }
