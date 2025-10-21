@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collation = "customers")
+@Document(collection = "customer")
 public class CustomerDTO {
     private Long id;
     private String name;

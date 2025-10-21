@@ -14,13 +14,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collation = "appointments")
-public class FullAppointmentsDTO {
+@Document(collection = "appointments")
+public class FullAppointmentDTO {
 
     private Long id;
     private LocalDateTime dateTime;
     private Boolean appointmentsOpen;
-    private CustomerDTO customerDTO;
-    private BeautyProcedureDTO beautyProcedureDTO;
+    private CustomerDTO customer;
+    private BeautyProcedureDTO beautyProcedure;
 
 }

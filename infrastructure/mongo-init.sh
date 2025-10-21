@@ -8,7 +8,7 @@ mongosh --username mongoadmin --password mongopassword --authenticationDatabase 
 use ms-beautique-query;
 
 db.dropUser("ms-beautique-query");
-db.dropUser("ms-sync")
+db.dropUser("ms-sync");
 
 db.createUser({
   user: 'ms-sync',
